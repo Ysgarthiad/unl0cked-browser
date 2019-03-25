@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.deki.unl0cked.browser.BrowserController">
+   <children>
+      <BorderPane fx:id="rootPane" layoutX="183.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <WebView fx:id="webView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <BorderPane prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <center>
+                  <TextField fx:id="urlBar" text="url" BorderPane.alignment="CENTER" />
+               </center>
+               <left>
+                  <Button fx:id="backButton" mnemonicParsing="false" text="Back" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Button fx:id="forwardButton" mnemonicParsing="false" text="Forward" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
