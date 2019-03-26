@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.web.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -24,8 +21,12 @@
                <right>
                   <Button fx:id="forwardButton" mnemonicParsing="false" text="Forward" BorderPane.alignment="CENTER" />
                </right>
+               <top>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="24.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+               </top>
             </BorderPane>
          </top>
       </BorderPane>
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="259.0" />
    </children>
 </AnchorPane>

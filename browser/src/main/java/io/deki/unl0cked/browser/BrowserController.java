@@ -4,8 +4,7 @@ import io.deki.unl0cked.boot.Bootstrap;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.CacheHint;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
@@ -37,6 +36,9 @@ public class BrowserController {
     public BorderPane rootPane;
 
     @FXML
+    public MenuBar menuBar;
+
+    @FXML
     public WebView webView;
 
     @FXML
@@ -53,6 +55,7 @@ public class BrowserController {
         installTrustingCert();
         bindDimensionProperties();
         navigationButtons();
+        initMenu();
         getEngine().setUserAgent(USER_AGENT);
         getEngine().load("https://google.com");
     }
@@ -76,12 +79,32 @@ public class BrowserController {
     }
 
     /**
+     * Add elements to the top menu.
+     */
+    private void initMenu() {
+        Menu fileMenu = new Menu("File");
+        Menu navigationMenu = new Menu("Navigate");
+
+        MenuItem close = new MenuItem("Close");
+        close.setOnAction(e -> System.exit(0));
+        fileMenu.getItems().add(close);
+
+        MenuItem googleNav = new MenuItem("Google");
+        googleNav.setOnAction(e -> getEngine().load("https://google.com"));
+        navigationMenu.getItems().add(googleNav);
+
+        getMenuBar().getMenus().add(fileMenu);
+        getMenuBar().getMenus().add(navigationMenu);
+    }
+
+    /**
      * Makes the components resize according to window size
      */
     private void bindDimensionProperties() {
         Bootstrap.getStage().addEventHandler(WindowEvent.WINDOW_SHOWING, e -> {
             getAnchorPane().prefHeightProperty().bind(Bootstrap.getScene().heightProperty());
             getAnchorPane().prefWidthProperty().bind(Bootstrap.getScene().widthProperty());
+            getMenuBar().prefWidthProperty().bind(Bootstrap.getScene().widthProperty());
         });
     }
 
@@ -135,6 +158,10 @@ public class BrowserController {
 
     public AnchorPane getAnchorPane() {
         return anchorPane;
+    }
+
+    public MenuBar getMenuBar() {
+        return menuBar;
     }
 
     public TextField getUrlBar() {
